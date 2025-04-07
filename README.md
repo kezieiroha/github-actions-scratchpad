@@ -31,7 +31,7 @@ This repository serves as my personal learning and practice environment for GitH
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
 - [GitHub Actions Marketplace](https://github.com/marketplace?type=actions)
 - [GitHub Community Forums](https://github.community/c/actions/41)
-- [Github Actions Learning Pathways] (https://resources.github.com/learn/pathways)
+- [Github Actions Learning Pathways](https://resources.github.com/learn/pathways)
 - Udemy.com
 
 ## Learning Goals
