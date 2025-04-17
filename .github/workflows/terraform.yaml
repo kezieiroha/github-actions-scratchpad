@@ -18,25 +18,29 @@ jobs:
         shell: bash
         working-directory: ./terraform
     steps:
-    # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v4
       
-    # Install the latest version of Terraform CLI
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       
-    # Initialize a new or existing Terraform working directory
     - name: Terraform Init
       run: terraform init
       
-    # Checks that all Terraform configuration files adhere to a canonical format
+    - name: Terraform Validate
+      run: terraform validate
+      
     - name: Terraform Format
       run: terraform fmt -check
       
-    # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan -input=false
+      id: plan
+      continue-on-error: true # Allow the workflow to continue even if the plan fails to capture full output, then exit below.
+    
+    - name: Check Plan Status
+      if: steps.plan.outcome == 'failure'
+      run: exit 1
       
     # On push to main, apply the changes
     - name: Terraform Apply
