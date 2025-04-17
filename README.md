@@ -9,22 +9,6 @@ This repository serves as my personal learning and practice environment for GitH
 - Learning CI/CD concepts in a practical environment
 - Documenting progress and lessons learned
 
-## Warning
-
-**Clone at your own risk.** This repository:
-- Contains experimental code
-- May have breaking changes
-- Is not optimized for production use
-- Could contain incomplete or abandoned experiments
-
-## Current Experiments
-
-*This section will be updated as I add new workflows and tests*
-
-- Basic workflow configuration
-- Environment variables and secrets
-- Job dependencies and matrix builds
-- Custom actions
 
 ## Resources I'm Using
 
@@ -43,6 +27,3 @@ This repository serves as my personal learning and practice environment for GitH
 - Explore integration with cloud services
 
 
-## License
-
-None
