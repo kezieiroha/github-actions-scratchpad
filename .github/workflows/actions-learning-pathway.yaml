@@ -6,7 +6,9 @@ on:
 jobs: 
   hello-world-job:
     runs-on: ubuntu-latest
+    env:
+      COURSE_PATH: actions-learning-pathway
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - run: echo "$(cat actions-learning-pathway/hello_world.txt)"
+      - run: echo "$(cat $COURSE_PATH/hello_world.txt)"
