@@ -1,6 +1,8 @@
 # GitHub Actions Scratchpad
 
-This repository serves as my personal learning and practice environment for GitHub Actions. It is not intended to showcase skills but rather to document my learning journey.
+This repository serves as my personal learning and practice environment for GitHub Actions. It is not intended to showcase skills but rather to document my learning journey. 
+
+GitHub Actions with standard runners are [free](https://docs.github.com/en/actions/administering-github-actions/usage-limits-billing-and-administration) if the repo is public. 
 
 ## Purpose
 
@@ -8,7 +10,6 @@ This repository serves as my personal learning and practice environment for GitH
 - Testing different action configurations and syntax
 - Learning CI/CD concepts in a practical environment
 - Documenting progress and lessons learned
-
 
 ## Resources I'm Using
 
