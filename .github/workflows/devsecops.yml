@@ -9,8 +9,13 @@ name: Terraform DevSecOps CI
 on:
   push:
     branches: [master, main]
+    paths:
+     - 'terraform/**'
   pull_request:
     branches: [master, main]
+    paths:
+     - 'terraform/**'
+
   workflow_dispatch:
 
 permissions:
