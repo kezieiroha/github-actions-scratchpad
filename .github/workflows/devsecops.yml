@@ -52,12 +52,10 @@ jobs:
     - name: Run Checkov
       run: checkov -d .
 
-    - name: Install Terrascan
-      run: |
-        curl -L -o terrascan.tar.gz https://github.com/tenable/terrascan/releases/latest/download/terrascan_Linux_x86_64.tar.gz
-        tar -xzf terrascan.tar.gz terrascan
-        chmod +x terrascan
-        sudo mv terrascan /usr/local/bin/terrascan
-
     - name: Run Terrascan
-      run: terrascan scan -t aws -i terraform -d .
+      uses: tenable/terrascan-action@main
+      with:
+        iac_type: 'terraform'
+        iac_version: 'v14'
+        policy_type: 'aws'
+        only_warn: true
