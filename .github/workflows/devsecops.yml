@@ -1,7 +1,7 @@
 # Kezie Iroha 05-2025
 # Basic DevSecOps CI/CD pipeline for Terraform projects
 # This GitHub Actions workflow is designed to perform static security analysis and checks on Terraform code.
-# It includes steps for initializing Terraform, formatting checks, validation, and running security tools like Trivy, Checkov, and Terrascan.
+# It includes steps for initializing Terraform, formatting checks, validation, and running security tools like tfsec/Trivy, Checkov, and Terrascan.
 # The workflow is triggered on push and pull request events to the main branch.
 
 name: Terraform DevSecOps CI
@@ -79,6 +79,23 @@ jobs:
         exit-code: '0'
       continue-on-error: true
 
+# TFsec optional, but it will be deprecated in favor of Trivy
+# - name: Install tfsec
+#   run: |
+#     curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | bash
+
+# - name: Run tfsec
+#   run: |
+#     tfsec . --format table || true
+#     tfsec . --format sarif --out tfsec.sarif || true    
+
+# - name: Upload tfsec SARIF
+#   uses: github/codeql-action/upload-sarif@v3
+#   with:
+#     sarif_file: aws-lab/tfsec.sarif
+#     category: tfsec
+#   continue-on-error: true
+
     - name: Upload Checkov SARIF
       uses: github/codeql-action/upload-sarif@v3
       with:
@@ -91,4 +108,4 @@ jobs:
       with:
         sarif_file: aws-lab/trivy-results.sarif
         category: trivy
-      continue-on-error: true     
+      continue-on-error: true
