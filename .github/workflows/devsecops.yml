@@ -40,7 +40,10 @@ jobs:
       run: terraform validate
 
     - name: Terraform Plan
-      run: terraform plan -out=tfplan
+      run: |
+        echo "::group::Terraform Plan"
+        time terraform plan -out=tfplan
+        echo "::endgroup::"
 
     - name: Install tfsec
       run: |
