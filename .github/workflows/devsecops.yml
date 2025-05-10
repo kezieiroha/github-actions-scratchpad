@@ -15,7 +15,7 @@ on:
 
 permissions:
   contents: read
-  
+
 jobs:
   devsecops:
     name: Static Security & Terraform Checks
@@ -23,10 +23,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v4.1.0
 
     - name: Set up Terraform
-      uses: hashicorp/setup-terraform@v3
+      uses: hashicorp/setup-terraform@v3.1.0
       with:
         terraform_version: 1.6.6
 
@@ -39,18 +39,21 @@ jobs:
     - name: Terraform Validate
       run: terraform validate
 
+    - name: Terraform Plan
+      run: terraform plan -out=tfplan
+
     - name: Install tfsec
       run: |
         curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | bash
 
     - name: Run tfsec
-      run: tfsec .
+      run: tfsec . --format sarif --out tfsec.sarif
 
     - name: Install Checkov
       run: pip install checkov
 
     - name: Run Checkov
-      run: checkov -d .
+      run: checkov -d . -o sarif > checkov.sarif
 
     - name: Run Terrascan
       uses: tenable/terrascan-action@main
